@@ -1,0 +1,109 @@
+<!--
+  Template: Form Page
+  Description: A page with a form for creating or editing an item
+  Use case: Product form, customer form, settings, etc.
+-->
+
+<s-page heading="$FORM_TITLE">
+  <!-- Primary action -->
+  <s-button slot="primary-action" variant="primary" type="submit">
+    Save
+  </s-button>
+
+  <!-- Secondary actions -->
+  <s-button slot="secondary-actions" commandFor="discard-modal">
+    Discard
+  </s-button>
+
+  <!-- Main form content -->
+  <s-grid gridTemplateColumns="2fr 1fr" gap="base">
+    <!-- Main column -->
+    <s-grid-item>
+      <!-- Basic information -->
+      <s-section heading="Basic information">
+        <s-stack direction="block" gap="base">
+          <s-text-field label="Title" required />
+          <s-text-area label="Description" placeholder="Enter description..." />
+        </s-stack>
+      </s-section>
+
+      <!-- Media -->
+      <s-section heading="Media">
+        <s-drop-zone
+          label="Product images"
+          accept=".jpg,.png,.gif,.webp"
+          multiple
+          accessibilityLabel="Upload product images"
+        />
+      </s-section>
+
+      <!-- Pricing -->
+      <s-section heading="Pricing">
+        <s-stack direction="inline" gap="base">
+          <s-money-field label="Price" currency="USD" required />
+          <s-money-field label="Compare at price" currency="USD" />
+        </s-stack>
+        <s-checkbox label="Charge tax on this product" />
+      </s-section>
+
+      <!-- Inventory -->
+      <s-section heading="Inventory">
+        <s-stack direction="block" gap="base">
+          <s-text-field label="SKU (Stock Keeping Unit)" />
+          <s-text-field label="Barcode (ISBN, UPC, GTIN, etc.)" />
+          <s-number-field label="Quantity" value="0" />
+          <s-checkbox label="Track quantity" checked />
+          <s-checkbox label="Continue selling when out of stock" />
+        </s-stack>
+      </s-section>
+    </s-grid-item>
+
+    <!-- Sidebar -->
+    <s-grid-item>
+      <!-- Status -->
+      <s-section heading="Status">
+        <s-select label="Status">
+          <option value="active">Active</option>
+          <option value="draft">Draft</option>
+          <option value="archived">Archived</option>
+        </s-select>
+      </s-section>
+
+      <!-- Organization -->
+      <s-section heading="Organization">
+        <s-stack direction="block" gap="base">
+          <s-text-field label="Product type" />
+          <s-text-field label="Vendor" />
+          <s-text-field label="Tags" details="Separate with commas" />
+        </s-stack>
+      </s-section>
+
+      <!-- Publishing -->
+      <s-section heading="Publishing">
+        <s-stack direction="block" gap="base">
+          <s-choice-list label="Sales channels" multiple>
+            <s-choice value="online">Online Store</s-choice>
+            <s-choice value="pos">Point of Sale</s-choice>
+            <s-choice value="facebook">Facebook</s-choice>
+            <s-choice value="instagram">Instagram</s-choice>
+          </s-choice-list>
+          <s-date-field label="Schedule availability" />
+        </s-stack>
+      </s-section>
+    </s-grid-item>
+  </s-grid>
+</s-page>
+
+<!-- Discard confirmation modal -->
+<s-modal id="discard-modal" heading="Discard changes?">
+  <s-paragraph>
+    If you discard changes, you'll delete any edits you made since you last saved.
+  </s-paragraph>
+
+  <s-button slot="secondary-actions" commandFor="discard-modal" command="--hide">
+    Continue editing
+  </s-button>
+  <s-button slot="primary-action" variant="primary" tone="critical">
+    Discard changes
+  </s-button>
+</s-modal>

@@ -1,0 +1,178 @@
+<!--
+  Template: Settings Page
+  Description: A settings page with sections of toggles and options
+  Use case: App settings, store settings, notification preferences, etc.
+-->
+
+<s-page heading="Settings">
+  <!-- Primary action -->
+  <s-button slot="primary-action" variant="primary" type="submit">
+    Save
+  </s-button>
+
+  <!-- General settings -->
+  <s-section heading="General">
+    <s-stack direction="block" gap="base">
+      <s-text-field label="Store name" value="My Store" required />
+      <s-email-field label="Store email" value="contact@mystore.com" />
+      <s-select label="Timezone">
+        <option value="utc">UTC</option>
+        <option value="est">Eastern Time</option>
+        <option value="pst">Pacific Time</option>
+        <option value="cet">Central European Time</option>
+      </s-select>
+      <s-select label="Currency">
+        <option value="usd">USD ($)</option>
+        <option value="eur">EUR (&euro;)</option>
+        <option value="gbp">GBP (&pound;)</option>
+        <option value="cad">CAD ($)</option>
+      </s-select>
+    </s-stack>
+  </s-section>
+
+  <s-divider />
+
+  <!-- Notifications -->
+  <s-section heading="Notifications">
+    <s-stack direction="block" gap="base">
+      <s-switch
+        label="Order notifications"
+        details="Receive an email when a new order is placed"
+        checked
+      />
+      <s-switch
+        label="Low stock alerts"
+        details="Get notified when inventory is running low"
+        checked
+      />
+      <s-switch
+        label="Customer signups"
+        details="Receive an email when a new customer creates an account"
+      />
+      <s-switch
+        label="Review notifications"
+        details="Get notified when customers leave product reviews"
+        checked
+      />
+    </s-stack>
+  </s-section>
+
+  <s-divider />
+
+  <!-- Privacy & Security -->
+  <s-section heading="Privacy & Security">
+    <s-stack direction="block" gap="base">
+      <s-switch
+        label="Two-factor authentication"
+        details="Add an extra layer of security to your account"
+      />
+      <s-switch
+        label="Password required for checkout"
+        details="Customers must create an account to complete checkout"
+      />
+      <s-choice-list label="Data retention" name="retention">
+        <s-choice value="30">30 days</s-choice>
+        <s-choice value="90">90 days</s-choice>
+        <s-choice value="365">1 year</s-choice>
+        <s-choice value="forever">Forever</s-choice>
+      </s-choice-list>
+    </s-stack>
+  </s-section>
+
+  <s-divider />
+
+  <!-- Integrations -->
+  <s-section heading="Integrations">
+    <s-stack direction="block" gap="base">
+      <!-- Connected integration -->
+      <s-box padding="base" background="subdued" borderRadius="base">
+        <s-stack direction="inline" gap="base">
+          <s-icon type="check" tone="success" />
+          <s-stack direction="block" gap="small">
+            <s-text type="strong">Google Analytics</s-text>
+            <s-text color="subdued">Connected</s-text>
+          </s-stack>
+          <s-button variant="tertiary" tone="critical">Disconnect</s-button>
+        </s-stack>
+      </s-box>
+
+      <!-- Available integration -->
+      <s-box padding="base" border="base" borderRadius="base">
+        <s-stack direction="inline" gap="base">
+          <s-icon type="plus" />
+          <s-stack direction="block" gap="small">
+            <s-text type="strong">Facebook Pixel</s-text>
+            <s-text color="subdued">Not connected</s-text>
+          </s-stack>
+          <s-button variant="secondary">Connect</s-button>
+        </s-stack>
+      </s-box>
+
+      <!-- Available integration -->
+      <s-box padding="base" border="base" borderRadius="base">
+        <s-stack direction="inline" gap="base">
+          <s-icon type="plus" />
+          <s-stack direction="block" gap="small">
+            <s-text type="strong">Mailchimp</s-text>
+            <s-text color="subdued">Not connected</s-text>
+          </s-stack>
+          <s-button variant="secondary">Connect</s-button>
+        </s-stack>
+      </s-box>
+    </s-stack>
+  </s-section>
+
+  <s-divider />
+
+  <!-- Danger zone -->
+  <s-section heading="Danger zone">
+    <s-banner tone="warning" heading="Careful with these settings">
+      These actions cannot be undone. Please proceed with caution.
+    </s-banner>
+
+    <s-stack direction="block" gap="base">
+      <s-box padding="base" border="base" borderRadius="base">
+        <s-stack direction="inline" gap="base">
+          <s-stack direction="block" gap="small">
+            <s-text type="strong">Export all data</s-text>
+            <s-text color="subdued">Download a copy of all your store data</s-text>
+          </s-stack>
+          <s-button variant="secondary">Export</s-button>
+        </s-stack>
+      </s-box>
+
+      <s-box padding="base" border="base" borderRadius="base">
+        <s-stack direction="inline" gap="base">
+          <s-stack direction="block" gap="small">
+            <s-text type="strong">Delete store</s-text>
+            <s-text color="subdued">Permanently delete your store and all data</s-text>
+          </s-stack>
+          <s-button variant="primary" tone="critical" commandFor="delete-modal">
+            Delete store
+          </s-button>
+        </s-stack>
+      </s-box>
+    </s-stack>
+  </s-section>
+</s-page>
+
+<!-- Delete confirmation modal -->
+<s-modal id="delete-modal" heading="Delete store?">
+  <s-banner tone="critical" heading="This action cannot be undone">
+    All your data, including products, orders, and customer information will be
+    permanently deleted.
+  </s-banner>
+
+  <s-text-field
+    label="Type 'DELETE' to confirm"
+    placeholder="DELETE"
+    required
+  />
+
+  <s-button slot="secondary-actions" commandFor="delete-modal" command="--hide">
+    Cancel
+  </s-button>
+  <s-button slot="primary-action" variant="primary" tone="critical" disabled>
+    Delete store
+  </s-button>
+</s-modal>

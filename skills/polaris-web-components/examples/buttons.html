@@ -1,0 +1,60 @@
+<!--
+  Example: Button Variants
+  Demonstrates all button styles and patterns
+-->
+
+<!-- Basic variants -->
+<s-stack direction="inline" gap="base">
+  <s-button>Default</s-button>
+  <s-button variant="primary">Primary</s-button>
+  <s-button variant="secondary">Secondary</s-button>
+  <s-button variant="tertiary">Tertiary</s-button>
+</s-stack>
+
+<!-- Destructive actions -->
+<s-stack direction="inline" gap="base">
+  <s-button variant="primary" tone="critical">Delete</s-button>
+  <s-button variant="secondary" tone="critical">Remove</s-button>
+  <s-button variant="tertiary" tone="critical">Cancel</s-button>
+</s-stack>
+
+<!-- With icons -->
+<s-stack direction="inline" gap="base">
+  <s-button icon="plus">Add item</s-button>
+  <s-button icon="edit" variant="secondary">Edit</s-button>
+  <s-button icon="delete" variant="tertiary" tone="critical">Delete</s-button>
+  <s-button icon="settings" variant="tertiary" accessibilityLabel="Settings" />
+</s-stack>
+
+<!-- States -->
+<s-stack direction="inline" gap="base">
+  <s-button loading>Loading</s-button>
+  <s-button disabled>Disabled</s-button>
+</s-stack>
+
+<!-- Full width -->
+<s-button variant="primary" inlineSize="fill">Full width button</s-button>
+
+<!-- As links -->
+<s-stack direction="inline" gap="base">
+  <s-button href="https://shopify.com">External link</s-button>
+  <s-button href="/products" variant="secondary">Internal link</s-button>
+  <s-button href="https://shopify.com" target="_blank">Opens in new tab</s-button>
+</s-stack>
+
+<!-- Button groups -->
+<s-button-group>
+  <s-button slot="secondary-actions">Cancel</s-button>
+  <s-button slot="secondary-actions">Save as draft</s-button>
+  <s-button slot="primary-action" variant="primary">Publish</s-button>
+</s-button-group>
+
+<!-- With menus -->
+<s-button commandFor="actions-menu">Actions</s-button>
+<s-menu id="actions-menu" accessibilityLabel="Available actions">
+  <s-button icon="edit">Edit</s-button>
+  <s-button icon="copy">Duplicate</s-button>
+  <s-button icon="archive">Archive</s-button>
+  <s-divider />
+  <s-button icon="delete" tone="critical">Delete</s-button>
+</s-menu>

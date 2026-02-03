@@ -1,0 +1,110 @@
+<!--
+  Template: Page with Data Table
+  Description: A page layout with a data table, search, and actions
+  Use case: Customer list, order list, product list, etc.
+-->
+
+<s-page heading="$PAGE_TITLE">
+  <!-- Primary action -->
+  <s-button slot="primary-action" variant="primary" commandFor="add-modal">
+    Add $ITEM_NAME
+  </s-button>
+
+  <!-- Secondary actions -->
+  <s-button slot="secondary-actions">Import</s-button>
+  <s-button slot="secondary-actions">Export</s-button>
+
+  <!-- Search and filters -->
+  <s-section>
+    <s-stack direction="inline" gap="base">
+      <s-search-field placeholder="Search $ITEM_NAME_PLURAL" />
+      <s-select label="Status" labelAccessibilityVisibility="exclusive">
+        <option value="">All</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </s-select>
+    </s-stack>
+  </s-section>
+
+  <!-- Data table -->
+  <s-section padding="none">
+    <s-table>
+      <s-table-header-row>
+        <s-table-header>Name</s-table-header>
+        <s-table-header>Email</s-table-header>
+        <s-table-header format="numeric">Orders</s-table-header>
+        <s-table-header>Status</s-table-header>
+        <s-table-header>Actions</s-table-header>
+      </s-table-header-row>
+      <s-table-body>
+        <!-- Row 1 -->
+        <s-table-row>
+          <s-table-cell>
+            <s-stack direction="inline" gap="small">
+              <s-avatar initials="JS" size="small" alt="John Smith" />
+              <s-text>John Smith</s-text>
+            </s-stack>
+          </s-table-cell>
+          <s-table-cell>john@example.com</s-table-cell>
+          <s-table-cell>23</s-table-cell>
+          <s-table-cell>
+            <s-badge tone="success">Active</s-badge>
+          </s-table-cell>
+          <s-table-cell>
+            <s-button commandFor="row-1-menu" variant="tertiary" icon="more">
+              Actions
+            </s-button>
+            <s-menu id="row-1-menu" accessibilityLabel="Actions for John Smith">
+              <s-button icon="edit">Edit</s-button>
+              <s-button icon="delete" tone="critical">Delete</s-button>
+            </s-menu>
+          </s-table-cell>
+        </s-table-row>
+
+        <!-- Row 2 -->
+        <s-table-row>
+          <s-table-cell>
+            <s-stack direction="inline" gap="small">
+              <s-avatar initials="JD" size="small" alt="Jane Doe" />
+              <s-text>Jane Doe</s-text>
+            </s-stack>
+          </s-table-cell>
+          <s-table-cell>jane@example.com</s-table-cell>
+          <s-table-cell>15</s-table-cell>
+          <s-table-cell>
+            <s-badge tone="info">Pending</s-badge>
+          </s-table-cell>
+          <s-table-cell>
+            <s-button commandFor="row-2-menu" variant="tertiary" icon="more">
+              Actions
+            </s-button>
+            <s-menu id="row-2-menu" accessibilityLabel="Actions for Jane Doe">
+              <s-button icon="edit">Edit</s-button>
+              <s-button icon="delete" tone="critical">Delete</s-button>
+            </s-menu>
+          </s-table-cell>
+        </s-table-row>
+      </s-table-body>
+    </s-table>
+  </s-section>
+</s-page>
+
+<!-- Add/Edit Modal -->
+<s-modal id="add-modal" heading="Add $ITEM_NAME">
+  <s-stack direction="block" gap="base">
+    <s-text-field label="Name" required />
+    <s-email-field label="Email" required />
+    <s-text-field label="Phone" />
+    <s-select label="Status">
+      <option value="active">Active</option>
+      <option value="inactive">Inactive</option>
+    </s-select>
+  </s-stack>
+
+  <s-button slot="secondary-actions" commandFor="add-modal" command="--hide">
+    Cancel
+  </s-button>
+  <s-button slot="primary-action" variant="primary" type="submit">
+    Add $ITEM_NAME
+  </s-button>
+</s-modal>

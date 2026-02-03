@@ -1,0 +1,215 @@
+<!--
+  Template: Dashboard
+  Description: A dashboard with stats cards, recent activity, and quick actions
+  Use case: Home page, analytics overview, admin dashboard
+-->
+
+<s-page heading="Dashboard">
+  <!-- Quick actions -->
+  <s-button slot="primary-action" variant="primary" commandFor="quick-add-popover">
+    Quick add
+  </s-button>
+
+  <s-popover id="quick-add-popover">
+    <s-stack direction="block" gap="small">
+      <s-button variant="tertiary" icon="product">Add product</s-button>
+      <s-button variant="tertiary" icon="order">Create order</s-button>
+      <s-button variant="tertiary" icon="customers">Add customer</s-button>
+    </s-stack>
+  </s-popover>
+
+  <!-- Welcome banner -->
+  <s-banner heading="Welcome back!" tone="info" dismissible>
+    You have 5 orders to fulfill and 3 messages waiting.
+  </s-banner>
+
+  <!-- Stats grid -->
+  <s-section heading="Today's overview">
+    <s-grid gridTemplateColumns="repeat(4, 1fr)" gap="base">
+      <!-- Total sales -->
+      <s-grid-item>
+        <s-box padding="base" background="subdued" borderRadius="base">
+          <s-stack direction="block" gap="small">
+            <s-text color="subdued">Total sales</s-text>
+            <s-heading>$12,456</s-heading>
+            <s-stack direction="inline" gap="small">
+              <s-badge tone="success">+12%</s-badge>
+              <s-text color="subdued">vs yesterday</s-text>
+            </s-stack>
+          </s-stack>
+        </s-box>
+      </s-grid-item>
+
+      <!-- Orders -->
+      <s-grid-item>
+        <s-box padding="base" background="subdued" borderRadius="base">
+          <s-stack direction="block" gap="small">
+            <s-text color="subdued">Orders</s-text>
+            <s-heading>156</s-heading>
+            <s-stack direction="inline" gap="small">
+              <s-badge tone="success">+8%</s-badge>
+              <s-text color="subdued">vs yesterday</s-text>
+            </s-stack>
+          </s-stack>
+        </s-box>
+      </s-grid-item>
+
+      <!-- Visitors -->
+      <s-grid-item>
+        <s-box padding="base" background="subdued" borderRadius="base">
+          <s-stack direction="block" gap="small">
+            <s-text color="subdued">Visitors</s-text>
+            <s-heading>2,345</s-heading>
+            <s-stack direction="inline" gap="small">
+              <s-badge tone="critical">-3%</s-badge>
+              <s-text color="subdued">vs yesterday</s-text>
+            </s-stack>
+          </s-stack>
+        </s-box>
+      </s-grid-item>
+
+      <!-- Conversion rate -->
+      <s-grid-item>
+        <s-box padding="base" background="subdued" borderRadius="base">
+          <s-stack direction="block" gap="small">
+            <s-text color="subdued">Conversion rate</s-text>
+            <s-heading>6.6%</s-heading>
+            <s-stack direction="inline" gap="small">
+              <s-badge tone="success">+2%</s-badge>
+              <s-text color="subdued">vs yesterday</s-text>
+            </s-stack>
+          </s-stack>
+        </s-box>
+      </s-grid-item>
+    </s-grid>
+  </s-section>
+
+  <!-- Main content grid -->
+  <s-grid gridTemplateColumns="2fr 1fr" gap="base">
+    <!-- Recent orders -->
+    <s-grid-item>
+      <s-section heading="Recent orders" padding="none">
+        <s-table>
+          <s-table-header-row>
+            <s-table-header>Order</s-table-header>
+            <s-table-header>Customer</s-table-header>
+            <s-table-header>Status</s-table-header>
+            <s-table-header format="numeric">Total</s-table-header>
+          </s-table-header-row>
+          <s-table-body>
+            <s-table-row>
+              <s-table-cell>
+                <s-link href="/orders/1001">#1001</s-link>
+              </s-table-cell>
+              <s-table-cell>John Smith</s-table-cell>
+              <s-table-cell>
+                <s-badge tone="warning">Pending</s-badge>
+              </s-table-cell>
+              <s-table-cell>$125.00</s-table-cell>
+            </s-table-row>
+            <s-table-row>
+              <s-table-cell>
+                <s-link href="/orders/1000">#1000</s-link>
+              </s-table-cell>
+              <s-table-cell>Jane Doe</s-table-cell>
+              <s-table-cell>
+                <s-badge tone="success">Fulfilled</s-badge>
+              </s-table-cell>
+              <s-table-cell>$89.99</s-table-cell>
+            </s-table-row>
+            <s-table-row>
+              <s-table-cell>
+                <s-link href="/orders/999">#999</s-link>
+              </s-table-cell>
+              <s-table-cell>Bob Wilson</s-table-cell>
+              <s-table-cell>
+                <s-badge tone="info">Shipped</s-badge>
+              </s-table-cell>
+              <s-table-cell>$234.50</s-table-cell>
+            </s-table-row>
+            <s-table-row>
+              <s-table-cell>
+                <s-link href="/orders/998">#998</s-link>
+              </s-table-cell>
+              <s-table-cell>Alice Brown</s-table-cell>
+              <s-table-cell>
+                <s-badge tone="success">Fulfilled</s-badge>
+              </s-table-cell>
+              <s-table-cell>$67.00</s-table-cell>
+            </s-table-row>
+          </s-table-body>
+        </s-table>
+        <s-box padding="base">
+          <s-link href="/orders">View all orders</s-link>
+        </s-box>
+      </s-section>
+    </s-grid-item>
+
+    <!-- Sidebar -->
+    <s-grid-item>
+      <!-- Tasks -->
+      <s-section heading="Tasks">
+        <s-stack direction="block" gap="base">
+          <s-box padding="base" border="base" borderRadius="base">
+            <s-stack direction="inline" gap="base">
+              <s-icon type="alert-circle" tone="warning" />
+              <s-stack direction="block" gap="small">
+                <s-text type="strong">5 orders to fulfill</s-text>
+                <s-link href="/orders?status=unfulfilled">View orders</s-link>
+              </s-stack>
+            </s-stack>
+          </s-box>
+
+          <s-box padding="base" border="base" borderRadius="base">
+            <s-stack direction="inline" gap="base">
+              <s-icon type="alert-circle" tone="critical" />
+              <s-stack direction="block" gap="small">
+                <s-text type="strong">3 products low on stock</s-text>
+                <s-link href="/products?status=low-stock">View products</s-link>
+              </s-stack>
+            </s-stack>
+          </s-box>
+
+          <s-box padding="base" border="base" borderRadius="base">
+            <s-stack direction="inline" gap="base">
+              <s-icon type="info" />
+              <s-stack direction="block" gap="small">
+                <s-text type="strong">2 abandoned checkouts</s-text>
+                <s-link href="/abandoned-checkouts">View checkouts</s-link>
+              </s-stack>
+            </s-stack>
+          </s-box>
+        </s-stack>
+      </s-section>
+
+      <!-- Top products -->
+      <s-section heading="Top products today">
+        <s-stack direction="block" gap="base">
+          <s-stack direction="inline" gap="base">
+            <s-thumbnail src="https://via.placeholder.com/40" alt="Product 1" size="small" />
+            <s-stack direction="block" gap="small">
+              <s-text type="strong">Wireless Headphones</s-text>
+              <s-text color="subdued">24 sold</s-text>
+            </s-stack>
+          </s-stack>
+
+          <s-stack direction="inline" gap="base">
+            <s-thumbnail src="https://via.placeholder.com/40" alt="Product 2" size="small" />
+            <s-stack direction="block" gap="small">
+              <s-text type="strong">Phone Case</s-text>
+              <s-text color="subdued">18 sold</s-text>
+            </s-stack>
+          </s-stack>
+
+          <s-stack direction="inline" gap="base">
+            <s-thumbnail src="https://via.placeholder.com/40" alt="Product 3" size="small" />
+            <s-stack direction="block" gap="small">
+              <s-text type="strong">USB-C Cable</s-text>
+              <s-text color="subdued">15 sold</s-text>
+            </s-stack>
+          </s-stack>
+        </s-stack>
+      </s-section>
+    </s-grid-item>
+  </s-grid>
+</s-page>

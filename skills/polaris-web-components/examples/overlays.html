@@ -1,0 +1,158 @@
+<!--
+  Example: Overlays (Modal, Popover, Tooltip)
+  Demonstrates the command and interest patterns
+-->
+
+<!-- Basic modal -->
+<s-button commandFor="basic-modal">Open basic modal</s-button>
+
+<s-modal id="basic-modal" heading="Basic Modal">
+  <s-paragraph>
+    This is a basic modal with a heading and content.
+  </s-paragraph>
+
+  <s-button slot="secondary-actions" commandFor="basic-modal" command="--hide">
+    Cancel
+  </s-button>
+  <s-button slot="primary-action" variant="primary" commandFor="basic-modal" command="--hide">
+    Confirm
+  </s-button>
+</s-modal>
+
+<!-- Confirmation modal -->
+<s-button variant="primary" tone="critical" commandFor="delete-modal">
+  Delete item
+</s-button>
+
+<s-modal id="delete-modal" heading="Delete item?">
+  <s-banner tone="critical" heading="This action cannot be undone">
+    Once deleted, this item will be permanently removed from your store.
+  </s-banner>
+
+  <s-button slot="secondary-actions" commandFor="delete-modal" command="--hide">
+    Cancel
+  </s-button>
+  <s-button slot="primary-action" variant="primary" tone="critical">
+    Delete
+  </s-button>
+</s-modal>
+
+<!-- Modal with form -->
+<s-button variant="primary" commandFor="form-modal">Add customer</s-button>
+
+<s-modal id="form-modal" heading="Add customer">
+  <s-stack direction="block" gap="base">
+    <s-text-field label="Full name" required />
+    <s-email-field label="Email" required />
+    <s-text-field label="Phone" />
+    <s-text-area label="Notes" placeholder="Add any notes about this customer" />
+  </s-stack>
+
+  <s-button slot="secondary-actions" commandFor="form-modal" command="--hide">
+    Cancel
+  </s-button>
+  <s-button slot="primary-action" variant="primary" type="submit">
+    Add customer
+  </s-button>
+</s-modal>
+
+<!-- Large modal with scrolling -->
+<s-button commandFor="large-modal">Open large modal</s-button>
+
+<s-modal id="large-modal" heading="Terms and Conditions">
+  <s-stack direction="block" gap="base">
+    <s-heading>1. Introduction</s-heading>
+    <s-paragraph>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod,
+      nisl eget aliquam ultricies, nunc nisl aliquet nunc, quis aliquam nisl
+      nunc quis nisl.
+    </s-paragraph>
+
+    <s-heading>2. User Agreement</s-heading>
+    <s-paragraph>
+      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+      ad minim veniam, quis nostrud exercitation ullamco laboris.
+    </s-paragraph>
+
+    <s-heading>3. Privacy Policy</s-heading>
+    <s-paragraph>
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur.
+    </s-paragraph>
+
+    <s-checkbox label="I have read and agree to the terms and conditions" />
+  </s-stack>
+
+  <s-button slot="secondary-actions" commandFor="large-modal" command="--hide">
+    Decline
+  </s-button>
+  <s-button slot="primary-action" variant="primary" commandFor="large-modal" command="--hide">
+    Accept
+  </s-button>
+</s-modal>
+
+<!-- Popover with menu -->
+<s-button commandFor="menu-popover">Options</s-button>
+
+<s-popover id="menu-popover">
+  <s-stack direction="block" gap="small">
+    <s-button variant="tertiary" icon="edit">Edit</s-button>
+    <s-button variant="tertiary" icon="copy">Duplicate</s-button>
+    <s-button variant="tertiary" icon="archive">Archive</s-button>
+    <s-divider />
+    <s-button variant="tertiary" icon="delete" tone="critical">Delete</s-button>
+  </s-stack>
+</s-popover>
+
+<!-- Popover with form -->
+<s-button commandFor="filter-popover">Filter</s-button>
+
+<s-popover id="filter-popover">
+  <s-stack direction="block" gap="base">
+    <s-select label="Status">
+      <option value="">All</option>
+      <option value="active">Active</option>
+      <option value="draft">Draft</option>
+      <option value="archived">Archived</option>
+    </s-select>
+
+    <s-select label="Sort by">
+      <option value="newest">Newest first</option>
+      <option value="oldest">Oldest first</option>
+      <option value="name">Name A-Z</option>
+    </s-select>
+
+    <s-button variant="primary" inlineSize="fill">Apply filters</s-button>
+  </s-stack>
+</s-popover>
+
+<!-- Tooltips -->
+<s-stack direction="inline" gap="base">
+  <s-tooltip id="save-tooltip">Save changes (Ctrl+S)</s-tooltip>
+  <s-button interestFor="save-tooltip" variant="primary">Save</s-button>
+
+  <s-tooltip id="help-tooltip">Click for more information</s-tooltip>
+  <s-button interestFor="help-tooltip" variant="tertiary" accessibilityLabel="Help">
+    ?
+  </s-button>
+
+  <s-tooltip id="icon-tooltip">View settings</s-tooltip>
+  <s-button interestFor="icon-tooltip" variant="tertiary" icon="settings" accessibilityLabel="Settings" />
+</s-stack>
+
+<!-- Command reference -->
+<!--
+  Commands:
+  - --auto   : Default action (usually toggle)
+  - --show   : Show the overlay
+  - --hide   : Hide the overlay
+  - --toggle : Toggle visibility
+
+  Pattern for modals:
+  1. Trigger button uses commandFor="modal-id" (defaults to --auto which shows)
+  2. Close buttons inside modal use commandFor="modal-id" command="--hide"
+
+  Pattern for tooltips:
+  1. Tooltip has id="tooltip-id"
+  2. Trigger element uses interestFor="tooltip-id"
+-->

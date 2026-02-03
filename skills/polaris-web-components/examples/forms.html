@@ -1,0 +1,130 @@
+<!--
+  Example: Form Components
+  Demonstrates all form input types and patterns
+-->
+
+<!-- Text inputs -->
+<s-section heading="Text inputs">
+  <s-stack direction="block" gap="base">
+    <s-text-field label="Basic text field" placeholder="Enter text..." />
+
+    <s-text-field
+      label="With help text"
+      details="This is additional context for the field"
+    />
+
+    <s-text-field
+      label="With error"
+      error="This field is required"
+      value=""
+      required
+    />
+
+    <s-text-field
+      label="With prefix and suffix"
+      prefix="$"
+      suffix="USD"
+      value="100.00"
+    />
+
+    <s-text-field
+      label="With icon"
+      icon="search"
+      placeholder="Search..."
+    />
+
+    <s-text-field
+      label="Disabled"
+      value="Cannot edit"
+      disabled
+    />
+
+    <s-text-field
+      label="Read only"
+      value="Read only value"
+      readOnly
+    />
+
+    <s-text-area
+      label="Multi-line text"
+      placeholder="Enter a longer description..."
+    />
+  </s-stack>
+</s-section>
+
+<!-- Specialized inputs -->
+<s-section heading="Specialized inputs">
+  <s-stack direction="block" gap="base">
+    <s-email-field label="Email address" />
+    <s-password-field label="Password" />
+    <s-url-field label="Website URL" />
+    <s-number-field label="Quantity" value="1" />
+    <s-money-field label="Price" currency="USD" />
+    <s-search-field placeholder="Search products..." />
+    <s-date-field label="Start date" />
+    <s-color-field label="Brand color" />
+  </s-stack>
+</s-section>
+
+<!-- Selection inputs -->
+<s-section heading="Selection inputs">
+  <s-stack direction="block" gap="base">
+    <s-select label="Country">
+      <option value="">Select a country</option>
+      <option value="us">United States</option>
+      <option value="ca">Canada</option>
+      <option value="uk">United Kingdom</option>
+      <option value="au">Australia</option>
+    </s-select>
+
+    <s-checkbox label="I agree to the terms and conditions" />
+
+    <s-checkbox
+      label="Subscribe to newsletter"
+      details="Get updates about new products and promotions"
+      checked
+    />
+
+    <!-- Single select (radio buttons) -->
+    <s-choice-list label="Shipping method" name="shipping">
+      <s-choice value="standard">Standard shipping (5-7 days)</s-choice>
+      <s-choice value="express">Express shipping (2-3 days)</s-choice>
+      <s-choice value="overnight">Overnight shipping (1 day)</s-choice>
+    </s-choice-list>
+
+    <!-- Multiple select (checkboxes) -->
+    <s-choice-list label="Features to enable" name="features" multiple>
+      <s-choice value="analytics">Analytics</s-choice>
+      <s-choice value="reports">Reports</s-choice>
+      <s-choice value="notifications">Notifications</s-choice>
+      <s-choice value="api">API access</s-choice>
+    </s-choice-list>
+
+    <s-switch
+      label="Enable dark mode"
+      details="Apply dark theme across the application"
+    />
+  </s-stack>
+</s-section>
+
+<!-- File upload -->
+<s-section heading="File upload">
+  <s-drop-zone
+    label="Upload files"
+    accept=".jpg,.png,.gif,.pdf"
+    multiple
+    accessibilityLabel="Upload images or PDF files"
+  />
+</s-section>
+
+<!-- Form with validation -->
+<s-section heading="Complete form example">
+  <s-stack direction="block" gap="base">
+    <s-text-field label="Full name" required />
+    <s-email-field label="Email" required />
+    <s-text-field label="Phone" details="Optional" />
+    <s-text-area label="Message" placeholder="How can we help?" required />
+    <s-checkbox label="I consent to being contacted about my inquiry" required />
+    <s-button variant="primary" type="submit">Submit</s-button>
+  </s-stack>
+</s-section>
