@@ -65,6 +65,11 @@ For templates and examples:
 - [templates/](templates/) - Ready-to-use UI templates
 - [examples/](examples/) - Component usage examples
 
+**For components not covered here**, use the Shopify Dev MCP tools if available:
+- Use the `search_shopify_docs` tool to look up component documentation
+- Use the `introspect_admin_schema` tool to explore API schemas
+- Reference: https://shopify.dev/docs/apps/build/devmcp.md
+
 ## Instructions
 
 When the user asks for help:
@@ -72,6 +77,7 @@ When the user asks for help:
 1. **For "create" or "build" requests**: Generate complete, working HTML using Polaris web components. Use templates from the `templates/` directory as starting points.
 
 2. **For "migrate" requests**: Show side-by-side React vs Web Component code. Reference `migration.md` for patterns.
+   - **IMPORTANT**: Only migrate the component code itself. Do NOT suggest creating TypeScript declaration files (.d.ts), JSX namespace extensions, or any type definitions. Focus solely on the component migration.
 
 3. **For component questions**: Provide examples with all relevant attributes. Reference `reference.md` for detailed APIs.
 
@@ -80,3 +86,8 @@ When the user asks for help:
    - Correct slot usage for actions
    - Command pattern for overlays
    - Working, copy-paste ready code
+
+5. **Never include**:
+   - TypeScript declaration files or .d.ts suggestions
+   - JSX IntrinsicElements type definitions
+   - Any boilerplate unrelated to the actual component code
