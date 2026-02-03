@@ -32,7 +32,7 @@ git clone https://github.com/geongeorge/Claude-Polaris-Web-Components-Skill.git 
    mkdir -p ~/.claude/skills/polaris-web-components
    ```
 
-2. Copy the `skills/polaris-web-components` folder contents to the directory
+2. Copy all files from this repo to the directory
 
 ## Usage
 
@@ -73,8 +73,8 @@ What's the difference between s-section and s-box?
 ## Skill Contents
 
 ```
-skills/polaris-web-components/
-├── SKILL.md           # Main skill definition
+polaris-web-components/
+├── skill.md           # Main skill definition
 ├── reference.md       # Complete component API reference
 ├── migration.md       # React to Web Components guide
 ├── templates/         # Ready-to-use UI templates
@@ -134,8 +134,8 @@ All Polaris web components use the `s-` prefix:
 
 ## Documentation
 
-- [reference.md](skills/polaris-web-components/reference.md) - Complete component API
-- [migration.md](skills/polaris-web-components/migration.md) - React migration guide
+- [reference.md](reference.md) - Complete component API
+- [migration.md](migration.md) - React migration guide
 - [Polaris Web Components (Shopify)](https://shopify.dev/docs/api/app-home/polaris-web-components)
 - [Polaris Design System](https://polaris.shopify.com)
 - [Claude Code Skills](https://code.claude.com/docs/en/skills)
